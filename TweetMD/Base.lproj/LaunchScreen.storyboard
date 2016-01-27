@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="ukE-Iy-ABD">
+                                <rect key="frame" x="150" y="34" width="300" height="533.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="533.5" id="EhU-6h-rdN"/>
+                                    <constraint firstAttribute="width" constant="300" id="K1Z-ko-Yir"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ukE-Iy-ABD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UOe-oj-2l7"/>
+                            <constraint firstItem="ukE-Iy-ABD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fPY-hf-303"/>
+                            <constraint firstItem="ukE-Iy-ABD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qjG-SM-vAX"/>
+                            <constraint firstItem="ukE-Iy-ABD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sy5-ns-w6n"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UOe-oj-2l7"/>
+                                <exclude reference="sy5-ns-w6n"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Splash" width="375" height="667"/>
+    </resources>
+</document>

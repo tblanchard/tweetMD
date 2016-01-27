@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TMTweetDetailViewController">
+            <connections>
+                <outlet property="bodyLabel" destination="clN-wj-AIt" id="yeB-e5-iWa"/>
+                <outlet property="handleLabel" destination="V4w-HJ-qDr" id="aN3-5w-t5A"/>
+                <outlet property="nameLabel" destination="y0p-jM-B4d" id="AIB-v0-dBE"/>
+                <outlet property="profilePicImageView" destination="bJX-v6-Vsj" id="1xo-hO-C5N"/>
+                <outlet property="view" destination="zaI-UE-scL" id="2D0-gN-H1R"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="zaI-UE-scL">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJX-v6-Vsj">
+                    <rect key="frame" x="15" y="76" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="PIK-RM-I48"/>
+                        <constraint firstAttribute="height" constant="50" id="o7n-W0-Ijq"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="224" placeholderIntrinsicHeight="19.5" text="Name name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0p-jM-B4d">
+                    <rect key="frame" x="80" y="76" width="224" height="19.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="224" placeholderIntrinsicHeight="21" text="@handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4w-HJ-qDr">
+                    <rect key="frame" x="80" y="99" width="224" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="289" placeholderIntrinsicHeight="159" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-wj-AIt">
+                    <rect key="frame" x="15" y="134" width="289" height="159"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rn6-fH-ZhG">
+                    <rect key="frame" x="15" y="310" width="289" height="44"/>
+                    <color key="backgroundColor" red="0.32549019610000002" green="0.56862745100000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="t6I-33-FON"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <state key="normal" title="Star this tweet">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="tappedStarButton:" destination="-1" eventType="touchUpInside" id="9cn-ye-5jy"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="V4w-HJ-qDr" firstAttribute="top" secondItem="y0p-jM-B4d" secondAttribute="bottom" constant="3.5" id="Bcg-Sg-wRy"/>
+                <constraint firstItem="rn6-fH-ZhG" firstAttribute="trailing" secondItem="clN-wj-AIt" secondAttribute="trailing" id="DDq-3a-aWb"/>
+                <constraint firstItem="rn6-fH-ZhG" firstAttribute="leading" secondItem="clN-wj-AIt" secondAttribute="leading" id="Hi0-PZ-uND"/>
+                <constraint firstItem="clN-wj-AIt" firstAttribute="leading" secondItem="bJX-v6-Vsj" secondAttribute="leading" id="P3z-Wq-Wv2"/>
+                <constraint firstItem="y0p-jM-B4d" firstAttribute="top" secondItem="bJX-v6-Vsj" secondAttribute="top" id="QFG-mu-p99"/>
+                <constraint firstItem="clN-wj-AIt" firstAttribute="trailing" secondItem="V4w-HJ-qDr" secondAttribute="trailing" id="Sj9-ym-IZF"/>
+                <constraint firstItem="bJX-v6-Vsj" firstAttribute="top" secondItem="zaI-UE-scL" secondAttribute="top" constant="15" id="XoA-lv-E24"/>
+                <constraint firstItem="bJX-v6-Vsj" firstAttribute="top" secondItem="zaI-UE-scL" secondAttribute="top" constant="76" id="YMQ-gs-fWM"/>
+                <constraint firstItem="V4w-HJ-qDr" firstAttribute="trailing" secondItem="y0p-jM-B4d" secondAttribute="trailing" id="Zsa-1Y-6DG"/>
+                <constraint firstItem="clN-wj-AIt" firstAttribute="top" secondItem="bJX-v6-Vsj" secondAttribute="bottom" constant="8" id="cdd-nT-L9Q"/>
+                <constraint firstItem="y0p-jM-B4d" firstAttribute="leading" secondItem="bJX-v6-Vsj" secondAttribute="trailing" constant="15" id="h8I-YS-X76"/>
+                <constraint firstItem="rn6-fH-ZhG" firstAttribute="top" secondItem="clN-wj-AIt" secondAttribute="bottom" constant="17" id="mTy-bR-5qK"/>
+                <constraint firstItem="V4w-HJ-qDr" firstAttribute="leading" secondItem="y0p-jM-B4d" secondAttribute="leading" id="u8c-jn-dD2"/>
+                <constraint firstAttribute="trailing" secondItem="y0p-jM-B4d" secondAttribute="trailing" constant="16" id="w35-tA-WoB"/>
+                <constraint firstItem="bJX-v6-Vsj" firstAttribute="leading" secondItem="zaI-UE-scL" secondAttribute="leading" constant="15" id="zKB-Kp-QFu"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="XoA-lv-E24"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="289" y="276"/>
+        </view>
+    </objects>
+</document>
