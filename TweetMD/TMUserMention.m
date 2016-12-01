@@ -32,7 +32,30 @@
     // ** Documentation: https://dev.twitter.com/overview/api/entities-in-twitter-objects
     // *********************
     
-    return nil;
+    
+    // Task 4
+    NSMutableArray* mentions = [NSMutableArray arrayWithCapacity:userMentionJSONArray.count];
+    
+    for (NSDictionary* json in userMentionJSONArray) {
+        TMUserMention* mention = [self new];
+        
+        mention.userID = json[@"id_str"];
+        mention.userScreenName = json[@"screen_name"];
+        mention.userFullName = json[@"name"];
+        NSArray* indices = json[@"indices"];
+        
+        // errors occur if you use an invalid index with NSArray
+        if(indices && indices.count >= 2) {
+            mention.startIndex = indices[0];
+            mention.endIndex = indices[1];
+        }
+        // no point adding invalid objects
+        if([mention isValidUserMention]) {
+            [mentions addObject:mention];
+        }
+    }
+    
+    return mentions;
 }
 
 #pragma mark - validity helpers
