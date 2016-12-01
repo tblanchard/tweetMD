@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSArray *userMentions;
 
+// Task 2 - cache fetched images in memory
+@property (nonatomic, strong) UIImage* image;
+
 @end

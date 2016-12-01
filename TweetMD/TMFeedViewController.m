@@ -39,9 +39,6 @@
     [self setupTableView];
     [self fetchMedicineTweets];
     
-    // Task 1 - Auto sizing of row heights
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 70;
 }
 
 #pragma mark - setup
@@ -51,6 +48,10 @@
     
     NSString *identifier = NSStringFromClass(TMTweetTableViewCell.class);
     [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
+    
+    // Task 1 - Auto sizing of row heights
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 70;
 }
 
 #pragma mark - requests
@@ -114,6 +115,14 @@
     detailVC.tweet = tweet;
     
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+// Task 2
+- (void)didReceiveMemoryWarning
+{
+    for(TMTweet* tweet in self.medicalTweets) {
+        tweet.image = nil;
+    }
 }
 
 @end
