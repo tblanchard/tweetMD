@@ -9,12 +9,16 @@
 #import "TMTweetDetailViewController.h"
 #import "TMTweet.h"
 #import "TMTweetViewModel.h"
+// Task 5
+#import "UIColor+TweetMD.h"
 
 @interface TMTweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bodyLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
+// Task 5
+@property (weak, nonatomic) IBOutlet UIButton* button;
 @end
 
 @implementation TMTweetDetailViewController
@@ -37,7 +41,8 @@
     self.nameLabel.text = viewModel.name;
     self.handleLabel.text = viewModel.handle;
     self.bodyLabel.attributedText = viewModel.attributedBodyText;
-
+    // Task 5
+    [self updateForStarState];
     [self loadImageFromURL:viewModel.profPicURL];
 }
 
@@ -46,6 +51,17 @@
     
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
     self.profilePicImageView.image = image;
+}
+
+// Task 5
+- (void)updateForStarState
+{
+    if(!self.tweet) return;
+    
+    TMTweetViewModel *viewModel = [[TMTweetViewModel alloc] initWithTweet:self.tweet];
+    
+    self.button.backgroundColor = viewModel.starButtonColor;
+    [self.button setTitle:viewModel.starButtonText forState:UIControlStateNormal];
 }
 
 #pragma mark - ibactions
@@ -66,6 +82,9 @@
     // **
     // NOTE: Starred tweets do not need to persist across sessions. This means that when I kill / restart the app, my previous stars do not need to be saved.
     // *********************
+    
+    self.tweet.starred = !self.tweet.isStarred;
+    [self updateForStarState];
 }
 
 @end

@@ -11,6 +11,8 @@
 #import "TMTweetViewModel.h"
 // Task 2
 #import "UIImageView+AFNetworking.h"
+// Task 5
+#import "UIColor+TweetMD.h"
 
 @interface TMTweetTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
@@ -36,6 +38,9 @@
     self.handleLabel.text = viewModel.handle;
     self.timeLabel.text = viewModel.timeElapsed;
     self.bodyLabel.attributedText = viewModel.attributedBodyText;
+    
+    // Task 5
+    self.backgroundColor = viewModel.backgroundColor;
     
     [self loadImageFromURL:viewModel.profPicURL];
 }

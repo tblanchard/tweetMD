@@ -20,6 +20,10 @@
 @property (nonatomic, readonly) NSString *timeElapsed;
 @property (nonatomic, readonly) NSAttributedString* attributedBodyText;
 @property (nonatomic, readonly) NSString* profPicURL;
+// Task 5
+@property (nonatomic, readonly) UIColor* backgroundColor;
+@property (nonatomic, readonly) UIColor* starButtonColor;
+@property (nonatomic, readonly) NSString* starButtonText;
 
 // Task 3 - so we can test it - I would probably have made this a category method on NSDate
 // but refactoring was out of scope

@@ -50,6 +50,21 @@
     return self.tweet.author.profileImageLargeURL;
 }
 
+- (UIColor*)backgroundColor
+{
+    return self.tweet.isStarred ? [UIColor starredYellow] : [UIColor whiteColor];
+}
+
+- (UIColor*)starButtonColor
+{
+    return self.tweet.isStarred ? [UIColor starredYellow] : [UIColor actionBlue];
+}
+
+- (NSString*)starButtonText
+{
+    return self.tweet.isStarred ? @"Starred!" : @"Star this Tweet";
+}
+
 #pragma mark - date helper
 
 - (NSString*)timeElapsedStringSince:(NSDate*)date {
