@@ -21,4 +21,7 @@
 @property (nonatomic, readonly) NSAttributedString* attributedBodyText;
 @property (nonatomic, readonly) NSString* profPicURL;
 
+// Task 3 - so we can test it - I would probably have made this a category method on NSDate
+// but refactoring was out of scope
+- (NSString*)timeElapsedStringSince:(NSDate*)date;
 @end

@@ -78,10 +78,10 @@
         return @"just now";
     } else if (minutesFromNow < 60) {
         return [NSString stringWithFormat:@"%@m", @(minutesFromNow)];
-    } else if (daysFromNow <= 7) {
-        return [NSString stringWithFormat:@"%@d", @(daysFromNow)];
     } else if (hoursFromNow < 24) {
         return [NSString stringWithFormat:@"%@h", @(hoursFromNow)];
+    } else if (daysFromNow <= 7) {
+        return [NSString stringWithFormat:@"%@d", @(daysFromNow)];
     } else {
         return [[NSDate localShortDateFormatter] stringFromDate:date];
     }
