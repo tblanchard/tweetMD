@@ -38,6 +38,10 @@
     
     [self setupTableView];
     [self fetchMedicineTweets];
+    
+    // Task 1 - Auto sizing of row heights
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 70;
 }
 
 #pragma mark - setup
@@ -86,10 +90,12 @@
     return self.medicalTweets.count;
 }
 
+/* Task 1 - remove to allow auto sizing of rows
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
-
+*/
+ 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TMTweet *tweet = [self.medicalTweets objectAtIndex:indexPath.row];
     
