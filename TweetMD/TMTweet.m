@@ -9,6 +9,8 @@
 #import "TMTweet.h"
 #import "TMUserMention.h"
 
+const NSString* TMTweetChangedNotification = @"TMTweetChanged";
+
 @interface TMTweet ()
 @property (nonatomic, strong) NSDictionary *jsonDict;
 @end

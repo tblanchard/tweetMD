@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 // Task 5
 @property (weak, nonatomic) IBOutlet UIButton* button;
+@property (strong, nonatomic) TMTweetViewModel *viewModel;
 @end
 
 @implementation TMTweetDetailViewController
@@ -36,14 +37,14 @@
 - (void)loadTweet {
     if (!self.tweet) return;
     
-    TMTweetViewModel *viewModel = [[TMTweetViewModel alloc] initWithTweet:self.tweet];
+    self.viewModel = [[TMTweetViewModel alloc] initWithTweet:self.tweet];
     
-    self.nameLabel.text = viewModel.name;
-    self.handleLabel.text = viewModel.handle;
-    self.bodyLabel.attributedText = viewModel.attributedBodyText;
+    self.nameLabel.text = self.viewModel.name;
+    self.handleLabel.text = self.viewModel.handle;
+    self.bodyLabel.attributedText = self.viewModel.attributedBodyText;
     // Task 5
     [self updateForStarState];
-    [self loadImageFromURL:viewModel.profPicURL];
+    [self loadImageFromURL:self.viewModel.profPicURL];
 }
 
 - (void)loadImageFromURL:(NSString*)imageURL {
@@ -58,10 +59,8 @@
 {
     if(!self.tweet) return;
     
-    TMTweetViewModel *viewModel = [[TMTweetViewModel alloc] initWithTweet:self.tweet];
-    
-    self.button.backgroundColor = viewModel.starButtonColor;
-    [self.button setTitle:viewModel.starButtonText forState:UIControlStateNormal];
+    self.button.backgroundColor = self.viewModel.starButtonColor;
+    [self.button setTitle:self.viewModel.starButtonText forState:UIControlStateNormal];
 }
 
 #pragma mark - ibactions
@@ -84,6 +83,7 @@
     // *********************
     
     self.tweet.starred = !self.tweet.isStarred;
+    [[NSNotificationCenter defaultCenter]postNotificationName:TMTweetChangedNotification object:self.tweet];
     [self updateForStarState];
 }
 

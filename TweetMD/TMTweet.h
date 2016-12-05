@@ -8,6 +8,8 @@
 
 #import <TwitterKit/TwitterKit.h>
 
+extern NSString* TMTweetChangedNotification;
+
 @interface TMTweet : TWTRTweet
 
 @property (nonatomic, strong) NSArray *userMentions;

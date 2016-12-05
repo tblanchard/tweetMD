@@ -9,12 +9,10 @@
 #import "TMUserMention.h"
 
 @interface TMUserMention ()
-@property (nonatomic, strong) NSString *userID;
-@property (nonatomic, strong) NSString *userScreenName;
-@property (nonatomic, strong) NSString *userFullName;
-@property (nonatomic, strong) NSNumber *startIndex;
-@property (nonatomic, strong) NSNumber *endIndex;
+@property (nonatomic, strong) NSDictionary* json;
 @end
+
+
 
 @implementation TMUserMention
 
@@ -32,23 +30,12 @@
     // ** Documentation: https://dev.twitter.com/overview/api/entities-in-twitter-objects
     // *********************
     
-    
     // Task 4
     NSMutableArray* mentions = [NSMutableArray arrayWithCapacity:userMentionJSONArray.count];
     
     for (NSDictionary* json in userMentionJSONArray) {
-        TMUserMention* mention = [self new];
-        
-        mention.userID = json[@"id_str"];
-        mention.userScreenName = json[@"screen_name"];
-        mention.userFullName = json[@"name"];
-        NSArray* indices = json[@"indices"];
-        
-        // errors occur if you use an invalid index with NSArray
-        if(indices && indices.count >= 2) {
-            mention.startIndex = indices[0];
-            mention.endIndex = indices[1];
-        }
+
+        TMUserMention* mention = [[self alloc]initWithJSONDictionary:json];
         // no point adding invalid objects
         if([mention isValidUserMention]) {
             [mentions addObject:mention];
@@ -56,6 +43,52 @@
     }
     
     return mentions;
+}
+
+-(instancetype)initWithJSONDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        self.json = dictionary;
+    }
+    return self;
+}
+
+#pragma mark - accessors
+
+-(NSString*)userID
+{
+    return self.json[@"id_str"];
+}
+
+-(NSString*)userScreenName
+{
+    return self.json[@"screen_name"];
+}
+
+-(NSString*)userFullName
+{
+    return self.json[@"name"];
+}
+
+-(NSNumber*)startIndex
+{
+    NSArray* indices = self.json[@"indices"];
+    if(indices.count)
+    {
+        return indices[0];
+    }
+    return nil;
+}
+
+-(NSNumber*)endIndex
+{
+    NSArray* indices = self.json[@"indices"];
+    if(indices.count > 1)
+    {
+        return indices[1];
+    }
+    return nil;
 }
 
 #pragma mark - validity helpers

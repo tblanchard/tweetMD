@@ -15,9 +15,6 @@
 @interface TMFeedViewController ()
 @property (nonatomic, strong) NSMutableArray *medicalTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-// Task 5
-@property (nonatomic, strong) NSIndexPath* editedRow;
-@property (nonatomic, assign) BOOL editedRowWasStarred;
 @end
 
 @implementation TMFeedViewController
@@ -41,7 +38,13 @@
     
     [self setupTableView];
     [self fetchMedicineTweets];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tweetChanged:) name:TMTweetChangedNotification object:nil];
+}
+
+-(void)dealloc
+{
+    // avoid the crash
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 #pragma mark - setup
@@ -93,12 +96,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.medicalTweets.count;
 }
-
-/* Task 1 - remove to allow auto sizing of rows
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
-}
-*/
  
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TMTweet *tweet = [self.medicalTweets objectAtIndex:indexPath.row];
@@ -117,25 +114,7 @@
     TMTweetDetailViewController *detailVC = [TMTweetDetailViewController new];
     detailVC.tweet = tweet;
     
-    // Task 5 - hang onto the indexPath - we will reload the cell when we reappear if the star status changed.
-    self.editedRow = indexPath;
-    self.editedRowWasStarred = tweet.isStarred;
     [self.navigationController pushViewController:detailVC animated:YES];
-}
-
-// Task 5 - reload the cell if the star status changed.
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    // were we editing something?
-    if(self.editedRow){
-        TMTweet *tweet = [self.medicalTweets objectAtIndex:self.editedRow.row];
-        // did the star status change?
-        if(self.editedRowWasStarred != tweet.isStarred) {
-            [self.tableView reloadRowsAtIndexPaths:@[self.editedRow] withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-        self.editedRow = nil;
-    }
 }
 
 // Task 2
@@ -144,6 +123,15 @@
     for(TMTweet* tweet in self.medicalTweets) {
         tweet.image = nil;
     }
+}
+
+// Task 5
+-(void)tweetChanged:(NSNotification*)note
+{
+    TMTweet* tweet = note.object;
+    NSInteger index = [self.medicalTweets indexOfObject: tweet];
+    NSIndexPath* path = [NSIndexPath indexPathForRow:index inSection: 0];
+    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

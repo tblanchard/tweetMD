@@ -17,4 +17,5 @@
 -(double)minutesFrom:(NSDate *)date;
 -(double)secondsFrom:(NSDate *)date;
 
+-(NSString*)timeElapsedStringSinceNow;
 @end

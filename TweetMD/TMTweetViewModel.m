@@ -68,38 +68,8 @@
 #pragma mark - date helper
 
 - (NSString*)timeElapsedStringSince:(NSDate*)date {
-    // ** [TASK 3] ********
-    // ** There is a bug with this method! Please find it and fix it
-    // **
-    // ** Input- date to calculate elapsed time from
-    // ** Output- time elapsed string:
-    // **
-    // ** 'just now' if less than 1 min ago
-    // ** 1-59m for less than 1 hour ago
-    // ** 1-23h for less than 1 day ago
-    // ** 1-7d for less than 8 days ago
-    // ** else, format the date e.g., 1/2/16
-    // *********************
-    
-    if (!date) return nil;
-    
-    NSDate *now = [NSDate date];
-    NSInteger secondsFromNow = [now secondsFrom:date];
-    NSInteger minutesFromNow = [now minutesFrom:date];
-    NSInteger hoursFromNow = [now hoursFrom:date];
-    NSInteger daysFromNow = [now daysFrom:date];
-    
-    if (secondsFromNow < 60) {
-        return @"just now";
-    } else if (minutesFromNow < 60) {
-        return [NSString stringWithFormat:@"%@m", @(minutesFromNow)];
-    } else if (hoursFromNow < 24) {
-        return [NSString stringWithFormat:@"%@h", @(hoursFromNow)];
-    } else if (daysFromNow <= 7) {
-        return [NSString stringWithFormat:@"%@d", @(daysFromNow)];
-    } else {
-        return [[NSDate localShortDateFormatter] stringFromDate:date];
-    }
+    // successful refactoring confirmed by tests
+    return [date timeElapsedStringSinceNow];
 }
 
 #pragma mark - body link helper
