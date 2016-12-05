@@ -1,5 +1,9 @@
 # TweetMD
 
+This is my solution to the below mentioned coding "test" from Doximity.
+
+It was rejected as "not pro enough".  So I don't really know WTF they want but I'm posting it because its a poor measure of a coder's abilities and I'm fed up with bullshit coding tests in the industry.
+
 TweetMD helps you stay up to date on the latest medical tweets! It uses the [Twitter API](https://dev.twitter.com/rest/public) to fetch the top 30 recent tweets about 'medicine' and displays them for your viewing pleasure (regardless of actual relevance to medicine...)
 
 It's coming along, but we need your help to polish it up!
